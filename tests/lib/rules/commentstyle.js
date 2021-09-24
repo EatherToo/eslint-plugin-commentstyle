@@ -16,38 +16,39 @@ const rule = require("../../../lib/rules/commentstyle"),
 // Tests
 //------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester();
+const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } });
 ruleTester.run("commentstyle", rule, {
   valid: [
     // give me some code that won't trigger a warning
-    `
-    /**
-      * 
-      * @returns hhhhhh
-      */
-    function printTips() {}
-    `,
-    `
-    /**
-      * @param {k} b kkghg
-      */
-    function printTips(b) {
-      return 1
-    }
-    `
+    // `
+    // /**
+    //   * 
+    //   * @returns hhhhhh
+    //   */
+    // function printTips() {}
+    // `,
+    // `
+    // /**
+    //   * @param {k} b kkghg
+    //   */
+    // function printTips(b) {
+    //   return 1
+    // }
+    // `,
+    `const a = 0`,
   ],
 
   invalid: [
-    {
-      code:     `
-      /**
-         * @param {k} b kkghg
-        */
-      function printTips(b) {
-        return 1
-      }
-      `,
-      errors: [{ message: "function commentstyle error, right style: \n @param {paramType} paramName paramDescription\n @returns returnDescription ", type: "FunctionDeclaration" }],
-    },
+    // {
+    //   code:     `
+    //   /**
+    //      * @param {k} b kkghg
+    //     */
+    //   function printTips(b) {
+    //     return 1
+    //   }
+    //   `,
+    //   errors: [{ message: "function commentstyle error, right style: \n @param {paramType} paramName paramDescription\n @returns returnDescription ", type: "FunctionDeclaration" }],
+    // },
   ],
 });
